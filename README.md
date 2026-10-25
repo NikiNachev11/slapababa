@@ -1,6 +1,4 @@
 # slapababa
 
 
-
-
-poli is a car
+Ники започва - 25 окт 17:16
