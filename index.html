@@ -74,10 +74,43 @@
   .pad .left { grid-column: 1; grid-row: 2; }
   .pad .down { grid-column: 2; grid-row: 2; }
   .pad .right { grid-column: 3; grid-row: 2; }
+  .road {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: #2e3338;
+    border-bottom: 3px dashed #f5d742;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .car {
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 90px;
+    animation: drive 6s linear infinite;
+  }
+  .car .wheel { animation: spin 0.5s linear infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes drive {
+    from { transform: translateX(-100px); }
+    to { transform: translateX(100vw); }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  main { padding-top: 72px; }
   .hint { font-size: 14px; opacity: 0.6; text-align: center; }
 </style>
 </head>
 <body>
+<div class="road" aria-hidden="true">
+  <svg class="car" viewBox="0 0 90 44">
+    <path d="M6 30 L10 20 Q12 16 18 16 L28 16 L38 5 Q40 3 44 3 L62 3 Q66 3 68 6 L76 16 L82 18 Q88 20 88 26 L88 32 L6 32 Z" fill="#e53935"/>
+    <path d="M32 16 L41 7 L52 7 L52 16 Z M56 16 L56 7 L64 7 L71 16 Z" fill="#bfe3f5"/>
+    <rect x="82" y="22" width="5" height="4" rx="1" fill="#fff59d"/>
+    <text x="36" y="28" font-size="9" font-family="sans-serif" font-weight="bold" fill="#fff">POLI</text>
+    <g class="wheel"><circle cx="24" cy="33" r="8" fill="#222"/><circle cx="24" cy="33" r="3" fill="#aaa"/><rect x="23" y="26" width="2" height="14" fill="#555"/></g>
+    <g class="wheel"><circle cx="70" cy="33" r="8" fill="#222"/><circle cx="70" cy="33" r="3" fill="#aaa"/><rect x="69" y="26" width="2" height="14" fill="#555"/></g>
+  </svg>
+</div>
 <main>
   <h1>SNAKE</h1>
   <div class="scores">
