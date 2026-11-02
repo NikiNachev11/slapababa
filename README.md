@@ -6,3 +6,6 @@ eho
 blqblabla
 <br> uyvdhwi
 <br> zdrasti
+
+
+🛍️ Online shop (demo): https://nikinachev11.github.io/slapababa/shop/
