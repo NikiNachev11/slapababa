@@ -1,0 +1,50 @@
+rules_version = '2';
+
+// Security rules for the Slapababa Shop (Firebase Firestore).
+// Paste these into Firebase console → Firestore Database → Rules → Publish.
+// See shop/SETUP-ACCOUNTS.md for the full guide.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Customer profiles. People can read and edit only their own profile,
+    // and can never make themselves admin.
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow create: if signedIn() && request.auth.uid == uid
+                    && request.resource.data.role == 'customer';
+      allow update: if isAdmin()
+                    || (signedIn() && request.auth.uid == uid
+                        && request.resource.data.role == resource.data.role);
+      allow delete: if signedIn() && (request.auth.uid == uid || isAdmin());
+    }
+
+    // Orders. Anyone can place one (guests too). Only the owner and admins can read it.
+    // Owners may only cancel; admins may change the status.
+    match /orders/{id} {
+      allow create: if request.resource.data.uid == null
+                    || (signedIn() && request.resource.data.uid == request.auth.uid);
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+      allow update: if isAdmin()
+                    || (signedIn() && resource.data.uid == request.auth.uid
+                        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'cancelledAt'])
+                        && request.resource.data.status == 'cancelled');
+    }
+
+    // Product reviews. Everyone can read; logged-in people can write their own.
+    match /reviews/{id} {
+      allow read: if true;
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid
+                    && request.resource.data.rating is int
+                    && request.resource.data.rating >= 1 && request.resource.data.rating <= 5
+                    && request.resource.data.text is string && request.resource.data.text.size() <= 1000;
+      allow delete: if isAdmin();
+    }
+  }
+}
