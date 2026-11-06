@@ -115,14 +115,59 @@ const RAW_PRODUCTS = [
   ["Air Freshener Pack", "auto", 8, null, 4.1, 610, 200, "🌲", ["car", "smell"], "Six pine tree air fresheners."],
   ["Jump Starter", "auto", 69, 89, 4.6, 260, 15, "⚡", ["battery", "car"], "Start your car when the battery is dead. Also a power bank."],
   ["Toy Car Model: Red Racer", "auto", 25, null, 4.8, 180, 30, "🚗", ["model", "collector"], "Detailed 1:24 scale model car. Doors open!"],
+  // More products (v2)
+  ["Studio Over-Ear Headphones", "electronics", 149, 189, 4.7, 820, 22, "🎧", ["audio", "headphones", "anc"], "Over-ear headphones with active noise cancelling, 40 hour battery and memory-foam cushions."],
+  ["Smart Home Hub", "electronics", 99, null, 4.3, 310, 30, "📡", ["smart", "home"], "Control lights, plugs and cameras from one place. Works with voice assistants."],
+  ["E-Reader Paperlight", "electronics", 129, 149, 4.8, 1410, 35, "📖", ["reading", "tablet"], "Glare-free 7\" screen that reads like paper. Weeks of battery on one charge."],
+  ["4K Action Camera", "electronics", 189, 239, 4.4, 402, 14, "📹", ["camera", "sport"], "Waterproof to 10 m without a case, with image stabilisation and 4K at 60fps."],
+  ["Wireless Charging Pad", "electronics", 25, null, 4.2, 950, 120, "🔌", ["charger"], "15W fast wireless charger with a non-slip surface."],
+  ["Merino Wool Sweater", "fashion", 69, null, 4.6, 302, 40, "🧶", ["sweater", "winter"], "Fine merino knit that is warm, breathable and soft on the skin."],
+  ["Leather Belt", "fashion", 29, null, 4.5, 280, 75, "🪢", ["belt", "leather"], "Full-grain leather belt with a brushed metal buckle."],
+  ["Rain Jacket", "fashion", 89, 109, 4.4, 196, 28, "☔", ["jacket", "rain"], "Lightweight waterproof jacket that packs into its own pocket."],
+  ["Classic Wristwatch", "fashion", 129, 159, 4.7, 233, 16, "🕰️", ["watch", "gift"], "Minimal analogue watch with a sapphire glass and leather strap."],
+  ["Cast Iron Dutch Oven", "home", 89, 119, 4.8, 712, 18, "🍲", ["cooking", "kitchen"], "Enamelled cast iron pot for stews, bread and slow cooking."],
+  ["Air Fryer XL", "home", 119, 149, 4.6, 1890, 26, "🍟", ["kitchen", "healthy"], "Crispy food with up to 80% less oil. 6 litre basket."],
+  ["Linen Bed Set", "home", 79, null, 4.5, 420, 32, "🛏️", ["bedroom", "linen"], "Stonewashed linen duvet cover and two pillowcases."],
+  ["Indoor Plant Pot Set", "home", 34, null, 4.4, 260, 50, "🪴", ["decor", "plants"], "Three ceramic pots with drainage and bamboo saucers."],
+  ["Running Shoes Pro", "sports", 119, 139, 4.7, 980, 30, "👟", ["running", "shoes"], "Responsive foam and a breathable upper for daily training."],
+  ["Fitness Resistance Bands", "sports", 19, null, 4.5, 1340, 160, "🪢", ["gym", "home workout"], "Five bands from extra light to extra heavy, with handles and a door anchor."],
+  ["Hiking Backpack 40L", "sports", 99, null, 4.6, 410, 20, "🎒", ["hiking", "outdoor"], "Ventilated back panel, rain cover and plenty of pockets."],
+  ["Chess Set Deluxe", "toys", 45, null, 4.8, 390, 25, "♟️", ["chess", "board game"], "Weighted wooden pieces and a folding board with storage."],
+  ["Science Experiment Kit", "toys", 39, 49, 4.6, 275, 30, "🔬", ["science", "learning"], "30 safe experiments that teach chemistry and physics."],
+  ["History of Everything", "books", 24, null, 4.7, 610, 45, "📜", ["history"], "A short, fun journey from the Big Bang to today."],
+  ["Mindful Habits", "books", 18, null, 4.4, 820, 60, "🧠", ["self-help"], "Small daily habits that make a big difference."],
+  ["Sunscreen SPF 50", "beauty", 16, null, 4.6, 1120, 140, "🧴", ["skincare", "summer"], "Light, non-greasy sunscreen for face and body."],
+  ["Beard Grooming Kit", "beauty", 35, 45, 4.5, 330, 40, "🪒", ["grooming"], "Trimmer, oil, balm and comb in a gift box."],
+  ["Gourmet Spice Box", "food", 29, null, 4.7, 210, 35, "🌶️", ["cooking", "gift"], "Twelve spices from around the world with recipe cards."],
+  ["Premium Matcha 100g", "food", 24, 29, 4.6, 180, 40, "🍵", ["tea", "organic"], "Ceremonial-grade Japanese matcha."],
+  ["Automatic Pet Feeder", "garden", 69, 89, 4.4, 420, 22, "🐾", ["pets", "smart"], "Schedule up to 6 meals a day from your phone."],
+  ["Solar Garden Lights (8 pack)", "garden", 29, null, 4.3, 610, 80, "🔆", ["garden", "light"], "Charge in the sun, glow all night. No wiring needed."],
+  ["Tyre Inflator", "auto", 45, 59, 4.6, 520, 30, "🛞", ["car", "tyres"], "Cordless inflator with a digital gauge and auto stop."],
+  ["Car Seat Organizer", "auto", 19, null, 4.3, 300, 70, "🧳", ["car", "storage"], "Keeps tablets, drinks and snacks tidy on the back seat."],
 ];
+
+// Made-up brands, two or three per category
+const BRANDS = {
+  electronics: ["Voltra", "Nexon", "Pixelia"],
+  fashion: ["Northwear", "Atelier Mira", "Urbano"],
+  home: ["Casa Nova", "Kitchenly", "Hearth & Co"],
+  sports: ["Peakline", "Stride", "Trailborn"],
+  toys: ["Playforge", "Tinytown"],
+  books: ["Inkwell Press", "Lantern Books"],
+  beauty: ["Lumiere", "Purely"],
+  food: ["Golden Grove", "Terra Fina"],
+  garden: ["Greenleaf", "Pawsome"],
+  auto: ["Roadmate", "Gearbox"],
+};
 
 const PRODUCTS = RAW_PRODUCTS.map((p, i) => {
   const [name, category, price, oldPrice, rating, reviews, stock, emoji, tags, description] = p;
   const cat = CATEGORIES.find((c) => c.id === category);
+  const brands = BRANDS[category];
   return {
     id: "p" + (i + 1),
     name, category, price, oldPrice, rating, reviews, stock, emoji, tags, description,
+    brand: brands[i % brands.length],
     colors: cat.colors,
     added: i, // used for "newest" sorting
   };
@@ -133,4 +178,5 @@ const COUPONS = {
   POLQ20: { type: "percent", value: 20, label: "20% off (friend code)" },
   FREESHIP: { type: "shipping", value: 0, label: "Free delivery" },
   NIKI5: { type: "fixed", value: 5, label: "€5 off" },
+  WELCOME15: { type: "percent", value: 15, label: "15% off for new customers" },
 };

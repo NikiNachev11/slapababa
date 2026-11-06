@@ -9,3 +9,4 @@ blqblabla
 
 
 🛍️ Online shop (demo): https://nikinachev11.github.io/slapababa/shop/
+🔑 Turn on real accounts for the shop: [shop/SETUP-ACCOUNTS.md](shop/SETUP-ACCOUNTS.md)
